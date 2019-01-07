@@ -1,0 +1,82 @@
+syntax = "proto3";
+package com.shootloking.xposed.xhs.xhs;
+
+message ChatModel {
+    uint32 a = 1;
+    Msg msg = 9;
+
+    enum ctype {
+        ELEMENT_NOT_SET = 0;
+        CHATSENDMESSAGE = 9;
+    }
+}
+
+message Msg {
+    string mid = 1; //a
+    uint64 timestamp = 2; //b
+    string chatToken = 3; //c
+    string sender = 4; //d
+    string receiver = 5; //e
+    string content = 6; //f
+    uint32 ii = 7; //g
+    string nickname = 8; //h
+    bool i = 9; //i
+}
+
+message Auth {
+    uint32 default1 = 1;
+    AuthMsg auth_msg = 2;
+}
+
+message AuthSession {
+    uint32 default1 = 1;
+    SessionAuthMsg auth_msg = 2;
+}
+
+message AuthMsg {
+    string sender = 1;
+    string session_id = 2;
+    string device_id = 3;
+    string defaule_red = 4;
+    AuthDevice auth_device = 5;
+}
+
+message SessionAuthMsg {
+    string sender_timettamp = 1;
+    string sender = 2;
+    string session_id = 3;
+    AuthDevice auth_device = 4;
+    string auth_type = 5;
+    string default_red = 6;
+}
+
+message AuthDevice {
+    string device_id = 1;
+    string auth_type = 2;
+    string platform = 3;
+    string model = 4;
+    string version = 5;
+    string android_sdk = 6;
+}
+
+message AuthRespError {
+    Error error = 3;
+}
+
+message AuthRespSuccess {
+    AuthSuccess resp = 3;
+}
+
+message AuthSuccess {
+    string sender_timestamp = 1;
+    string id = 2;
+    string type = 3;
+    string token = 4;
+    uint64 timestamp = 5;
+}
+
+message Error {
+    string type = 1;
+    string id = 2;
+    string msg = 3;
+}
